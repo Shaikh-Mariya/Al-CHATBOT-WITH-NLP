@@ -1,0 +1,55 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+# Define patterns and responses using NLTK's Chat class
+pairs = [
+    [
+        r"my name is (.*)",
+        ["Hello %1, how can I help you today?",]
+    ],
+    [
+        r"what is your name?",
+        ["I am a chatbot created with NLTK.",]
+    ],
+    [
+        r"how are you ?",
+        ["I'm doing well, thank you!", "I'm feeling great!",]
+    ],
+    [
+        r"sorry (.*)",
+        ["No problem.", "Don't worry about it.",]
+    ],
+    [
+        r"i'm (.*) doing good",
+        ["Nice to hear that!", "That's good news.",]
+    ],
+    [
+        r"hi|hello|hey",
+        ["Hello!", "Hi there!", "Hey!",]
+    ],
+    [
+        r"bye|goodbye|see you",
+        ["Goodbye!", "Bye!", "See you later!",]
+    ],
+    [
+        r"quit|exit",
+        ["Bye!", "It was nice talking to you.", "Have a great day!",]
+    ],
+    [
+        r"(.*) (weather|temperature) (today)?",
+        ["I'm sorry, I cannot provide real-time weather information.", "You can check a weather website or app for that.",]
+    ],
+    [
+        r"(.*) (thank you|thanks)",
+        ["You're welcome!", "No problem.",]
+    ],
+    [
+        r"what can you do?",
+        ["I can have simple conversations with you.", "Ask me a question!",]
+    ],
+]
+
+# Create a Chat instance
+chatbot = Chat(pairs, reflections)
+
+chatbot.converse()
